@@ -1,0 +1,28 @@
+fecha: 2021-03-04
+hora: 10:45:00
+para: Aner
+de: Eneritz
+asunto: Quedada
+contenido: A las 5 de la tarde en la puerta del teatro.
+****
+fecha: 2021-01-31
+hora: 12:15:00
+para: Eneritz
+de: Aner
+asunto: Respuesta
+contenido: Ok.
+****
+fecha: 2025-07-19
+hora: 20:23:00
+para: pruebaaa
+de: prueba
+asunto: hola
+contenido: holaholahola
+****
+fecha: 2025-11-20
+hora: 18:00:00
+para: fasoef
+de: otraprueba
+asunto: aisdfuhawes
+contenido: askjdfbaiesuf
+****
