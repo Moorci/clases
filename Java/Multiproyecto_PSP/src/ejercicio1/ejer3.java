@@ -15,9 +15,9 @@ public class ejer3 {
             BufferedReader bis = new BufferedReader(new InputStreamReader(is));
             String linea = "";
             while ((linea = bis.readLine()) != null) {
-                linea = linea.trim();
-                if (linea.contains("-")) {
-                    String mac = linea.split(" ")[0];
+                linea = linea.trim();//quita espacios
+                if (linea.contains("-")) {//si la linea contiene un guion, es decir, una direc.mac
+                    String mac = linea.split(" ")[0];//divide hasta el espacio
                     System.out.println(mac);
                 }
             }
