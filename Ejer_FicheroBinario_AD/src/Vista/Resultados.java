@@ -1,8 +1,11 @@
 package Vista;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Resultados {
+public class Resultados implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
 	
 	private String nombreLocal;
 	private String nombreVisit;

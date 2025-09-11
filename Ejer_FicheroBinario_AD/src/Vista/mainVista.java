@@ -6,11 +6,18 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import java.awt.event.ActionListener;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.awt.event.ActionEvent;
 
 public class mainVista extends JFrame {
 
@@ -44,8 +51,9 @@ public class mainVista extends JFrame {
 	 * Create the frame.
 	 */
 	public mainVista() {
+		gestorResultado gestor = new gestorResultado();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 430);
+		setBounds(100, 100, 617, 430);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -101,28 +109,91 @@ public class mainVista extends JFrame {
 		contentPane.add(txtLugar);
 		
 		txtFecha = new JTextField();
+		txtFecha.setText("yyyy-MM-DD");
 		txtFecha.setColumns(10);
 		txtFecha.setBounds(119, 151, 99, 20);
 		contentPane.add(txtFecha);
 		
 		JButton btnAñadir = new JButton("Añadir");
+		btnAñadir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				añadirResultado(gestor);
+				actualizarTabla(gestor.resultados);
+			}
+		});
 		btnAñadir.setBounds(20, 193, 89, 23);
 		contentPane.add(btnAñadir);
 		
 		JButton btnCargar = new JButton("Cargar");
+		btnCargar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				gestor.cargarResultados();
+				actualizarTabla(gestor.resultados);
+			}
+		});
 		btnCargar.setBounds(119, 193, 89, 23);
 		contentPane.add(btnCargar);
 		
 		JButton btnGuardar = new JButton("Guardar");
+		btnGuardar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				gestor.guardarResultados(gestor.resultados);
+			}
+		});
 		btnGuardar.setBounds(218, 193, 89, 23);
 		contentPane.add(btnGuardar);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(20, 242, 404, 138);
+		scrollPane.setBounds(20, 242, 571, 138);
 		contentPane.add(scrollPane);
 		
 		table = new JTable();
 		scrollPane.setViewportView(table);
+		
+	}
+	public void añadirResultado(gestorResultado gestor) {
+		String fechaTexto = txtFecha.getText();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		
+		Resultados resultado = new Resultados();
+		resultado.setNombreLocal(txtEquipoLocal.getText());
+		resultado.setNombreVisit(txtEquipoVisitante.getText());
+		resultado.setGolesLocal((Integer.parseInt(txtGolesLocales.getText())));
+		resultado.setGolesVisit(Integer.parseInt(txtGolesVisitante.getText()));
+		resultado.setLugar(txtLugar.getText());
+        try {
+            Date fecha = sdf.parse(fechaTexto);
+            resultado.setFecha(fecha);
+        } catch (ParseException ex) {
+            ex.printStackTrace();
+        }
+		gestor.añadirResultado(resultado);
+	}
+	
+	public void actualizarTabla(ArrayList<Resultados> listaResultados) {
+	    String[] columnas = {"Local", "Visitante", "Goles Local", "Goles Visitante", "Lugar", "Fecha"};
+	    DefaultTableModel modelo = new DefaultTableModel(columnas, 0);
 
+	    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+	    for (Resultados res : listaResultados) {
+	        Object[] fila = {
+	            res.getNombreLocal(),
+	            res.getNombreVisit(),
+	            res.getGolesLocal(),
+	            res.getGolesVisit(),
+	            res.getLugar(),
+	            res.getFecha() != null ? sdf.format(res.getFecha()) : ""
+	        };
+	        modelo.addRow(fila);
+	    }
+
+	    table.setModel(modelo);
+	}
+	
+	public void verificar() {
+		String nomLocal = txtEquipoLocal.getText();
+		String nomVisit = txtEquipoLocal.getText();
+		String golLoc = txtGolesLocales.getText();
 	}
 }
