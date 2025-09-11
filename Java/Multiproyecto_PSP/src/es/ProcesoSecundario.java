@@ -10,7 +10,6 @@ import java.io.OutputStream;
 public class ProcesoSecundario {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		System.out.println("hola");
 		try {
 			ProcessBuilder pb = new ProcessBuilder("java","es.Programa");
