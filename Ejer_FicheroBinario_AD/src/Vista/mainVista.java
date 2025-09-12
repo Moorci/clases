@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
@@ -109,7 +110,6 @@ public class mainVista extends JFrame {
 		contentPane.add(txtLugar);
 		
 		txtFecha = new JTextField();
-		txtFecha.setText("yyyy-MM-DD");
 		txtFecha.setColumns(10);
 		txtFecha.setBounds(119, 151, 99, 20);
 		contentPane.add(txtFecha);
@@ -117,8 +117,10 @@ public class mainVista extends JFrame {
 		JButton btnAñadir = new JButton("Añadir");
 		btnAñadir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				añadirResultado(gestor);
-				actualizarTabla(gestor.resultados);
+				if(verificar()) {
+					añadirResultado(gestor);
+					actualizarTabla(gestor.resultados);
+				}
 			}
 		});
 		btnAñadir.setBounds(20, 193, 89, 23);
@@ -149,6 +151,10 @@ public class mainVista extends JFrame {
 		
 		table = new JTable();
 		scrollPane.setViewportView(table);
+		
+		JLabel lblNewLabel = new JLabel("YYYY-MM-DD");
+		lblNewLabel.setBounds(228, 154, 96, 14);
+		contentPane.add(lblNewLabel);
 		
 	}
 	public void añadirResultado(gestorResultado gestor) {
@@ -191,9 +197,20 @@ public class mainVista extends JFrame {
 	    table.setModel(modelo);
 	}
 	
-	public void verificar() {
+	public boolean verificar() {
 		String nomLocal = txtEquipoLocal.getText();
 		String nomVisit = txtEquipoLocal.getText();
 		String golLoc = txtGolesLocales.getText();
+		String golVisit = txtGolesVisitante.getText();
+		String lugar = txtLugar.getText();
+		String fecha = txtFecha.getText();
+		
+		if(nomLocal.isEmpty() ||  nomVisit.isEmpty() || golLoc.isEmpty() || golVisit.isEmpty() 
+				|| lugar.isEmpty() || fecha.isEmpty()) {
+			JOptionPane.showMessageDialog(this, "Rellena todos los campos", "Alerta", JOptionPane.WARNING_MESSAGE);
+			return false;
+		}else {
+			return true;
+		}
 	}
 }

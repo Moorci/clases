@@ -10,7 +10,7 @@ public class ejer6 {
 		pb.redirectOutput(new File("salida.txt"));
 		pb.redirectError(new File("errores.txt"));
 		try {
-			Process proces = pb.start();
+			pb.start();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
