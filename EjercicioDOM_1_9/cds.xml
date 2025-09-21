@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="windows-1252"?>
-<CATALOG>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?><CATALOG>
 <CD>
 <TITLE>Empire Burlesque</TITLE>
 <ARTIST>Bob Dylan</ARTIST>
@@ -208,4 +207,4 @@
 <PRICE>8.20</PRICE>
 <YEAR>1987</YEAR>
 </CD>
-</CATALOG>
+<CD><TITLE>X100PRE</TITLE><ARTIST>Bad Bunny</ARTIST><COUNTRY>PR</COUNTRY><COMPANY>Sony</COMPANY><PRICE>12.99</PRICE><YEAR>2018</YEAR></CD></CATALOG>
