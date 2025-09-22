@@ -1,0 +1,14 @@
+C:\Users\in2dm3-a\Documents\VS2022_proyects\03-Any_MethodSyntax\Any01\bin\Debug\net8.0\Any01.exe
+C:\Users\in2dm3-a\Documents\VS2022_proyects\03-Any_MethodSyntax\Any01\bin\Debug\net8.0\Any01.deps.json
+C:\Users\in2dm3-a\Documents\VS2022_proyects\03-Any_MethodSyntax\Any01\bin\Debug\net8.0\Any01.runtimeconfig.json
+C:\Users\in2dm3-a\Documents\VS2022_proyects\03-Any_MethodSyntax\Any01\bin\Debug\net8.0\Any01.dll
+C:\Users\in2dm3-a\Documents\VS2022_proyects\03-Any_MethodSyntax\Any01\bin\Debug\net8.0\Any01.pdb
+C:\Users\in2dm3-a\Documents\VS2022_proyects\03-Any_MethodSyntax\Any01\obj\Debug\net8.0\Any01.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\in2dm3-a\Documents\VS2022_proyects\03-Any_MethodSyntax\Any01\obj\Debug\net8.0\Any01.AssemblyInfoInputs.cache
+C:\Users\in2dm3-a\Documents\VS2022_proyects\03-Any_MethodSyntax\Any01\obj\Debug\net8.0\Any01.AssemblyInfo.cs
+C:\Users\in2dm3-a\Documents\VS2022_proyects\03-Any_MethodSyntax\Any01\obj\Debug\net8.0\Any01.csproj.CoreCompileInputs.cache
+C:\Users\in2dm3-a\Documents\VS2022_proyects\03-Any_MethodSyntax\Any01\obj\Debug\net8.0\Any01.dll
+C:\Users\in2dm3-a\Documents\VS2022_proyects\03-Any_MethodSyntax\Any01\obj\Debug\net8.0\refint\Any01.dll
+C:\Users\in2dm3-a\Documents\VS2022_proyects\03-Any_MethodSyntax\Any01\obj\Debug\net8.0\Any01.pdb
+C:\Users\in2dm3-a\Documents\VS2022_proyects\03-Any_MethodSyntax\Any01\obj\Debug\net8.0\Any01.genruntimeconfig.cache
+C:\Users\in2dm3-a\Documents\VS2022_proyects\03-Any_MethodSyntax\Any01\obj\Debug\net8.0\ref\Any01.dll

@@ -1,0 +1,14 @@
+C:\Users\in2dm3-a\Documents\ConObjetos\bin\Debug\net8.0\ConObjetos.exe
+C:\Users\in2dm3-a\Documents\ConObjetos\bin\Debug\net8.0\ConObjetos.deps.json
+C:\Users\in2dm3-a\Documents\ConObjetos\bin\Debug\net8.0\ConObjetos.runtimeconfig.json
+C:\Users\in2dm3-a\Documents\ConObjetos\bin\Debug\net8.0\ConObjetos.dll
+C:\Users\in2dm3-a\Documents\ConObjetos\bin\Debug\net8.0\ConObjetos.pdb
+C:\Users\in2dm3-a\Documents\ConObjetos\obj\Debug\net8.0\ConObjetos.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\in2dm3-a\Documents\ConObjetos\obj\Debug\net8.0\ConObjetos.AssemblyInfoInputs.cache
+C:\Users\in2dm3-a\Documents\ConObjetos\obj\Debug\net8.0\ConObjetos.AssemblyInfo.cs
+C:\Users\in2dm3-a\Documents\ConObjetos\obj\Debug\net8.0\ConObjetos.csproj.CoreCompileInputs.cache
+C:\Users\in2dm3-a\Documents\ConObjetos\obj\Debug\net8.0\ConObjetos.dll
+C:\Users\in2dm3-a\Documents\ConObjetos\obj\Debug\net8.0\refint\ConObjetos.dll
+C:\Users\in2dm3-a\Documents\ConObjetos\obj\Debug\net8.0\ConObjetos.pdb
+C:\Users\in2dm3-a\Documents\ConObjetos\obj\Debug\net8.0\ConObjetos.genruntimeconfig.cache
+C:\Users\in2dm3-a\Documents\ConObjetos\obj\Debug\net8.0\ref\ConObjetos.dll
