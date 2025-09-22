@@ -11,9 +11,11 @@ import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
 
@@ -67,9 +69,6 @@ public class frameVista extends JFrame {
 		textField_3.setBounds(471, 30, 86, 20);
 		contentPane.add(textField_3);
 		
-		JButton btnStart_3 = new JButton("Start");
-		btnStart_3.setBounds(471, 63, 89, 23);
-		contentPane.add(btnStart_3);
 		
 		JLabel lblNewLabel = new JLabel("PID:");
 		lblNewLabel.setBounds(36, 115, 46, 14);
@@ -82,10 +81,6 @@ public class frameVista extends JFrame {
 		JLabel lblNewLabel_1 = new JLabel("Resultado");
 		lblNewLabel_1.setBounds(36, 168, 72, 14);
 		contentPane.add(lblNewLabel_1);
-		
-		JTextArea textArea2 = new JTextArea();
-		textArea2.setBounds(457, 212, 149, 226);
-		contentPane.add(textArea2);
 		
 		JLabel lblid = new JLabel("");
 		lblid.setBounds(167, 115, 72, 14);
@@ -146,7 +141,7 @@ public class frameVista extends JFrame {
 				ProcessBuilder pb = new ProcessBuilder(nombrePrograma);
 				
 				try {
-					Process proces = pb.start();;
+					Process proces = pb.start();
 					ProcessHandle ph = proces.toHandle();
 					id = proces.pid();
 					IDparent = ph.parent().get().pid();
@@ -161,6 +156,58 @@ public class frameVista extends JFrame {
 		btnStart.setBounds(164, 63, 89, 23);
 		contentPane.add(btnStart);
 		
+		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.setBounds(467, 212, 159, 226);
+		contentPane.add(scrollPane_1);
+		
+		JTextArea textArea2 = new JTextArea();
+		scrollPane_1.setViewportView(textArea2);
+		
+		JLabel lblid_3 = new JLabel("");
+		lblid_3.setBounds(471, 115, 86, 14);
+		contentPane.add(lblid_3);
+		
+		JLabel lblidParent_3 = new JLabel("");
+		lblidParent_3.setBounds(471, 143, 72, 14);
+		contentPane.add(lblidParent_3);
+		
+		JButton btnStart_3 = new JButton("Start");
+		btnStart_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				for(int i = 0; i< 5; i++) {
+					ProcessBuilder pb = new ProcessBuilder("java","Vista.EjemploProceso");
+					pb.directory(new File("bin"));
+					try {
+						Process p = pb.start();
+						Long id = p.pid();
+						Long idParent = p.toHandle().parent().get().pid();
+						
+						lblid_3.setText(id+"");
+						lblidParent_3.setText(idParent+"");
+						
+						OutputStream os = p.getOutputStream();
+						String name = textField_3.getText().trim() + "\n";
+						os.write(name.getBytes());
+						os.flush();
+						
+						InputStream is = p.getInputStream();
+						BufferedReader bis = new BufferedReader(new InputStreamReader(is));
+						
+						String linea = "";
+						while((linea = bis.readLine()) != null) {
+							textArea2.setText(textArea2.getText() + "Escribe una cadena: " + "\n" + linea + "\n");
+						}
+						
+						p.waitFor();
+						is.close();
+					}catch(IOException | InterruptedException ex) {
+						ex.printStackTrace();
+					}
+				}
+			}
+		});
+		btnStart_3.setBounds(471, 63, 89, 23);
+		contentPane.add(btnStart_3);
 		
 	}
 }

@@ -22,7 +22,7 @@ class Contador implements Runnable {
 
     @Override
     public void run() {
-        for (int i = 1; i < 3; i++) {
+        for (int i = 1; i < 1000; i++) {
             System.out.println(nombre + " cuenta: " + i);
         }
         System.out.println(nombre + " ha terminado.");

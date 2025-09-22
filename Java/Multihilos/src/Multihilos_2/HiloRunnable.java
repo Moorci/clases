@@ -1,9 +1,9 @@
 package Multihilos_2;
 
-public class ejercicio1 {
+public class HiloRunnable {
 	public static void main(String[] args) {
-		HiloRunnable tarea1 = new HiloRunnable("Hilo-1");
-		HiloRunnable tarea2 = new HiloRunnable("Hilo-2");
+		ClasehiloRunnable tarea1 = new ClasehiloRunnable("Hilo-1");
+		ClasehiloRunnable tarea2 = new ClasehiloRunnable("Hilo-2");
 
 		Thread hilo1 = new Thread(tarea1);
 		Thread hilo2 = new Thread(tarea2);
@@ -24,10 +24,10 @@ public class ejercicio1 {
 	}
 }
 
-class HiloRunnable implements Runnable {
+class ClasehiloRunnable implements Runnable {
 	private String nombre;
 
-	public HiloRunnable(String nombre) {
+	public ClasehiloRunnable(String nombre) {
 		this.nombre = nombre;
 	}
 
