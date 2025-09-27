@@ -2,7 +2,6 @@ package mostrarJSON;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.util.Iterator;
 import java.util.Map;
 
 import com.google.gson.JsonArray;
@@ -10,73 +9,65 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.JsonPrimitive;
+import com.google.gson.JsonIOException;
+import com.google.gson.JsonSyntaxException;
 
 public class mostrarJSONPRO {
 
-	public static void main(String[] args) {
-		JsonParser parser = new JsonParser();
-		final String url = "resources/stocks.json";
+    public static void main(String[] args) {
+        String url = "resources/stocks.json";
 
-		try {
+        try {
+            JsonParser parser = new JsonParser();
+            JsonElement datos = parser.parse(new FileReader(url));
 
-			FileReader fr = new FileReader(url);
-			JsonElement datos = parser.parse(fr);
+            if (datos.isJsonArray()) {
+                JsonArray array = datos.getAsJsonArray();
+                System.out.println("Array con " + array.size() + " elementos");
+                for (JsonElement item : array) {
+                    procesarElemento(item);
+                }
+            } else {
+                System.out.println("Elemento raíz no es un array");
+                procesarElemento(datos);
+            }
 
-			JsonArray array = datos.getAsJsonArray();
-			System.out.println("Array. Numero de elementos :" + array.size());
-			Iterator<JsonElement> iter = array.iterator();
-			while (iter.hasNext()) {
-				JsonElement entrada = iter.next();
-				System.out.println("\nObjeto");
-				JsonObject objeto = entrada.getAsJsonObject();
-				Iterator<Map.Entry<String, JsonElement>> iter2 = objeto.entrySet().iterator();
-				
-				System.out.println("Atributo: Company");
-				JsonPrimitive valor = iter2.next().getValue().getAsJsonPrimitive();
-				verificacionesDelValor(valor);
-				
-				System.out.println("Atributo: descripcion");
-				JsonPrimitive valor2 = iter2.next().getValue().getAsJsonPrimitive();
-				verificacionesDelValor(valor2);
-				
-				System.out.println("Atributo: initial_price");
-				JsonPrimitive valor3 = iter2.next().getValue().getAsJsonPrimitive();
-				verificacionesDelValor(valor3);
-				
-				System.out.println("Atributo: price_2002");
-				JsonPrimitive valor4 = iter2.next().getValue().getAsJsonPrimitive();
-				verificacionesDelValor(valor4);
-				
-				System.out.println("Atributo: price_2007");
-				JsonPrimitive valor5 = iter2.next().getValue().getAsJsonPrimitive();
-				verificacionesDelValor(valor5);
-				
-				System.out.println("Atributo: symbol");
-				JsonPrimitive valor6 = iter2.next().getValue().getAsJsonPrimitive();
-				verificacionesDelValor(valor6);
+        } catch (FileNotFoundException e) {
+            System.err.println("Archivo no encontrado: " + url);
+            e.printStackTrace();
+        } catch (JsonIOException | JsonSyntaxException e) {
+            System.err.println("Error al leer o interpretar el JSON.");
+            e.printStackTrace();
+        }
+    }
 
-			}
+    private static void procesarElemento(JsonElement elemento) {
+        if (elemento.isJsonArray()) {
+            JsonArray array = elemento.getAsJsonArray();
+            for (JsonElement item : array) {
+                procesarElemento(item);
+            }
+        } else if (elemento.isJsonObject()) {
+            JsonObject objeto = elemento.getAsJsonObject();
+            System.out.println("\nObjeto:");
+            for (Map.Entry<String, JsonElement> entry : objeto.entrySet()) {
+                System.out.println("Atributo: " + entry.getKey());
+                procesarElemento(entry.getValue());
+            }
+        } else if (elemento.isJsonPrimitive()) {
+            JsonPrimitive valor = elemento.getAsJsonPrimitive();
+            System.out.println("\t" + tipoDeValor(valor) + ": " + valor.toString());
+        } else if (elemento.isJsonNull()) {
+            System.out.println("Valor nulo");
+        } else {
+            System.out.println("Tipo de elemento desconocido");
+        }
+    }
 
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-	}
-	
-	private static void verificacionesDeElemento(JsonElement elemento) {
-		
-	}
-
-	private static void verificacionesDelValor(JsonPrimitive valor) {
-		if(valor.isBoolean()) {
-			System.out.println("\tBoolean: " + valor.getAsBoolean());
-		}else if(valor.isNumber()) {
-			System.out.println("\tBoolean: " + valor.getAsNumber());
-		}else {
-			System.out.println("\tBoolean: " + valor.getAsString());
-		}
-		
-	}
-
+    private static String tipoDeValor(JsonPrimitive valor) {
+        if (valor.isBoolean()) return "Boolean";
+        if (valor.isNumber()) return "Número";
+        if (valor.isString()) return "Texto";
+        return "Primitivo desconocido";
+    }
 }
