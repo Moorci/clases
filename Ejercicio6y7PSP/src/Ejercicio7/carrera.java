@@ -23,7 +23,7 @@ public class carrera extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					carrera frame = new carrera();
+					carrera frame = new carrera(5, 5, 5, 5); // añado 5 para que tengan todos la prioridad normal por defecto
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -35,7 +35,7 @@ public class carrera extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public carrera() {
+	public carrera(int priCaballo1, int priCaballo2, int priCaballo3, int priCaballo4) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -82,17 +82,17 @@ public class carrera extends JFrame {
 		JButton btnEmpezarCarrera = new JButton("Empezar");
 		btnEmpezarCarrera.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//Establecemos los valores de los jprogressbar a 0
+				//reinicio los valores del progress bar
 				progressBarCaballo1.setValue(0);
 				progressBarCaballo2.setValue(0);
 				progressBarCaballo3.setValue(0);
 				progressBarCaballo4.setValue(0);
 				HiloCaballo.hayganador = false;
 				
-				HiloCaballo caballo1 = new HiloCaballo(progressBarCaballo1, "1", lblCaballoGanador);
-				HiloCaballo caballo2 = new HiloCaballo(progressBarCaballo2, "2", lblCaballoGanador);
-				HiloCaballo caballo3 = new HiloCaballo(progressBarCaballo3, "3", lblCaballoGanador);
-				HiloCaballo caballo4 = new HiloCaballo(progressBarCaballo4, "4", lblCaballoGanador);
+				HiloCaballo caballo1 = new HiloCaballo(progressBarCaballo1, "1", lblCaballoGanador, priCaballo1);
+				HiloCaballo caballo2 = new HiloCaballo(progressBarCaballo2, "2", lblCaballoGanador, priCaballo2);
+				HiloCaballo caballo3 = new HiloCaballo(progressBarCaballo3, "3", lblCaballoGanador, priCaballo3);
+				HiloCaballo caballo4 = new HiloCaballo(progressBarCaballo4, "4", lblCaballoGanador, priCaballo4);
 				
 				caballo1.start();
 				caballo2.start();
@@ -102,6 +102,18 @@ public class carrera extends JFrame {
 		});
 		btnEmpezarCarrera.setBounds(156, 220, 105, 27);
 		contentPane.add(btnEmpezarCarrera);
+		
+		JButton btnCheatButton = new JButton("");
+		btnCheatButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				cheatFrame frame = new cheatFrame();
+				frame.setVisible(true);
+				setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+				dispose();
+			}
+		});
+		btnCheatButton.setBounds(416, 236, 34, 27);
+		contentPane.add(btnCheatButton);
 
 	}
 }

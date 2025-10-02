@@ -10,11 +10,13 @@ public class HiloCaballo extends Thread{
     private JLabel ganador;
     private boolean corriendo = true;
     static boolean hayganador = false;
+    private int prioridad;
     
-	public HiloCaballo (JProgressBar barra, String nombreCaballo, JLabel ganador) {
+	public HiloCaballo (JProgressBar barra, String nombreCaballo, JLabel ganador, int prioridad) {
 		this.barra = barra;
 		this.nombreCaballo = nombreCaballo;
 		this.ganador = ganador;
+		this.prioridad = prioridad;
 	}
 	
 	public void terminar () {
@@ -24,10 +26,10 @@ public class HiloCaballo extends Thread{
 	@Override
 	public void run() {
 		while(corriendo && barra.getValue() < 100 && !hayganador) {
-			int progreso = (int) (Math.random()*11);
+			int progreso = (int) (Math.random() * prioridad);
 			int nuevoValor = barra.getValue() + progreso;
-			barra.setValue(Math.min(nuevoValor, 100)); // para no pasarse de 100
-			if (barra.getValue() >= 100) {
+			barra.setValue(nuevoValor);
+			if (barra.getValue() == 100) {
 	            synchronized (HiloCaballo.class) {
 	                if (!hayganador) {
 	                    hayganador = true;
@@ -35,7 +37,7 @@ public class HiloCaballo extends Thread{
 	                }
 	            }
 	        }try {
-                Thread.sleep(250);
+                Thread.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
