@@ -6,7 +6,7 @@ public class Ejecutable {
 		
 		Buffer b = new Buffer();
 		Productor p = new Productor (b, 500);
-		Consumidor c = new Consumidor (b, 1000);
+		Consumidor c = new Consumidor (b, 550);
 		
 		p.start();
 		c.start();

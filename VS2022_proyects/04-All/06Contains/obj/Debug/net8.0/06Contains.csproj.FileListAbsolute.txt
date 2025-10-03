@@ -1,0 +1,14 @@
+C:\Users\in2dm3-a\Documents\VS2022_proyects\04-All\06Contains\bin\Debug\net8.0\06Contains.exe
+C:\Users\in2dm3-a\Documents\VS2022_proyects\04-All\06Contains\bin\Debug\net8.0\06Contains.deps.json
+C:\Users\in2dm3-a\Documents\VS2022_proyects\04-All\06Contains\bin\Debug\net8.0\06Contains.runtimeconfig.json
+C:\Users\in2dm3-a\Documents\VS2022_proyects\04-All\06Contains\bin\Debug\net8.0\06Contains.dll
+C:\Users\in2dm3-a\Documents\VS2022_proyects\04-All\06Contains\bin\Debug\net8.0\06Contains.pdb
+C:\Users\in2dm3-a\Documents\VS2022_proyects\04-All\06Contains\obj\Debug\net8.0\06Contains.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\in2dm3-a\Documents\VS2022_proyects\04-All\06Contains\obj\Debug\net8.0\06Contains.AssemblyInfoInputs.cache
+C:\Users\in2dm3-a\Documents\VS2022_proyects\04-All\06Contains\obj\Debug\net8.0\06Contains.AssemblyInfo.cs
+C:\Users\in2dm3-a\Documents\VS2022_proyects\04-All\06Contains\obj\Debug\net8.0\06Contains.csproj.CoreCompileInputs.cache
+C:\Users\in2dm3-a\Documents\VS2022_proyects\04-All\06Contains\obj\Debug\net8.0\06Contains.dll
+C:\Users\in2dm3-a\Documents\VS2022_proyects\04-All\06Contains\obj\Debug\net8.0\refint\06Contains.dll
+C:\Users\in2dm3-a\Documents\VS2022_proyects\04-All\06Contains\obj\Debug\net8.0\06Contains.pdb
+C:\Users\in2dm3-a\Documents\VS2022_proyects\04-All\06Contains\obj\Debug\net8.0\06Contains.genruntimeconfig.cache
+C:\Users\in2dm3-a\Documents\VS2022_proyects\04-All\06Contains\obj\Debug\net8.0\ref\06Contains.dll

@@ -1,0 +1,14 @@
+C:\Users\in2dm3-a\Documents\VS2022_proyects\04-All\08MinMax\bin\Debug\net8.0\08MinMax.exe
+C:\Users\in2dm3-a\Documents\VS2022_proyects\04-All\08MinMax\bin\Debug\net8.0\08MinMax.deps.json
+C:\Users\in2dm3-a\Documents\VS2022_proyects\04-All\08MinMax\bin\Debug\net8.0\08MinMax.runtimeconfig.json
+C:\Users\in2dm3-a\Documents\VS2022_proyects\04-All\08MinMax\bin\Debug\net8.0\08MinMax.dll
+C:\Users\in2dm3-a\Documents\VS2022_proyects\04-All\08MinMax\bin\Debug\net8.0\08MinMax.pdb
+C:\Users\in2dm3-a\Documents\VS2022_proyects\04-All\08MinMax\obj\Debug\net8.0\08MinMax.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\in2dm3-a\Documents\VS2022_proyects\04-All\08MinMax\obj\Debug\net8.0\08MinMax.AssemblyInfoInputs.cache
+C:\Users\in2dm3-a\Documents\VS2022_proyects\04-All\08MinMax\obj\Debug\net8.0\08MinMax.AssemblyInfo.cs
+C:\Users\in2dm3-a\Documents\VS2022_proyects\04-All\08MinMax\obj\Debug\net8.0\08MinMax.csproj.CoreCompileInputs.cache
+C:\Users\in2dm3-a\Documents\VS2022_proyects\04-All\08MinMax\obj\Debug\net8.0\08MinMax.dll
+C:\Users\in2dm3-a\Documents\VS2022_proyects\04-All\08MinMax\obj\Debug\net8.0\refint\08MinMax.dll
+C:\Users\in2dm3-a\Documents\VS2022_proyects\04-All\08MinMax\obj\Debug\net8.0\08MinMax.pdb
+C:\Users\in2dm3-a\Documents\VS2022_proyects\04-All\08MinMax\obj\Debug\net8.0\08MinMax.genruntimeconfig.cache
+C:\Users\in2dm3-a\Documents\VS2022_proyects\04-All\08MinMax\obj\Debug\net8.0\ref\08MinMax.dll
