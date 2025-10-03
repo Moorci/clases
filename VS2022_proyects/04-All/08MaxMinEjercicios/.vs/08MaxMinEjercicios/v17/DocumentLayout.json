@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\in2dm3-a\\Documents\\clases\\VS2022_proyects\\04-All\\08MaxMinEjercicios\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{6CB31A8D-A744-4545-A294-B6472C4A1FBE}|08MaxMinEjercicios.csproj|c:\\users\\in2dm3-a\\documents\\clases\\vs2022_proyects\\04-all\\08maxminejercicios\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6CB31A8D-A744-4545-A294-B6472C4A1FBE}|08MaxMinEjercicios.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\in2dm3-a\\Documents\\clases\\VS2022_proyects\\04-All\\08MaxMinEjercicios\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\in2dm3-a\\Documents\\clases\\VS2022_proyects\\04-All\\08MaxMinEjercicios\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAADgAAAAAAAAAAAAuwEQAAABAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-03T08:28:00.096Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
