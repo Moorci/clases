@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
 import com.google.auth.oauth2.GoogleCredentials;
+import com.google.cloud.firestore.CollectionReference;
 import com.google.cloud.firestore.DocumentReference;
 import com.google.cloud.firestore.Firestore;
 import com.google.cloud.firestore.FirestoreOptions;
@@ -29,6 +30,7 @@ public class Recorrido {
 			eliminar1(db);
 			eliminar2(db);
 			modificarEmpleado(db);
+			insertarDepartamentoyEmpleados(db);
 
 			QuerySnapshot query = db.collection("Departamento").get().get();
 			List<QueryDocumentSnapshot> departamentos = query.getDocuments();
@@ -147,6 +149,31 @@ public class Recorrido {
 	        e.printStackTrace();
 	    }
 	}
+	
+	private static void insertarDepartamentoyEmpleados(Firestore db) {
+        CollectionReference empresa = db.collection("DEPARTAMENTO");
+
+        Map<String, Object> dep = new HashMap<>();
+        dep.put("nombre", "INFORMATICA");
+        dep.put("localización", "Bilbao");
+        DocumentReference depNew = empresa.document();
+        depNew.set(dep);
+
+        Map<String, Object> empleado = new HashMap<>();
+        empleado.put("apellido", "RUIZ");
+        empleado.put("cargo", "DIRECTOR");
+        empleado.put("salario", 2300);
+        empleado.put("comision", 1000);
+
+        CollectionReference empleadosCol = depNew.collection("EMPLEADOS");
+        empleadosCol.add(empleado);
+
+        try {
+            db.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
 
+	}
 }
