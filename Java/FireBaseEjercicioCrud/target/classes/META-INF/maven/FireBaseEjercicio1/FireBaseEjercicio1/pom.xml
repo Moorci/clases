@@ -4,19 +4,18 @@
 
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
 
-                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <dependencies>
- 	<dependency>
-    <groupId>com.google.code.gson</groupId>
-    <artifactId>gson</artifactId>
-    <version>2.6.2</version>
-    </dependency>
-  </dependencies>
-  	
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd">  
   <modelVersion>4.0.0</modelVersion>
-  <groupId>EjercicioJSON1_11</groupId>
-  <artifactId>EjercicioJSON1_11</artifactId>
+  <groupId>FireBaseEjercicio1</groupId>
+  <artifactId>FireBaseEjercicio1</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <dependencies>
+ <dependency>
+	<groupId>com.google.firebase</groupId>
+    <artifactId>firebase-admin</artifactId>
+    <version>8.1.0</version>
+</dependency>
+  </dependencies>
   <build>
     <sourceDirectory>src</sourceDirectory>
     <plugins>
