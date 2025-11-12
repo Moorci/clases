@@ -1,0 +1,60 @@
+title="Raising Arizona"
+type="mistery"
+rating="PG-13"
+year=1992
+writer=Ethan Coen, Joel Coen
+producer=Ethan Coen
+director=Joel XXX
+actor=Holly Coen, Nicolas Cage, John Goodman
+comments="A classic one-of-a-kind screwball love story"
+
+title="Midnight Run"
+type="comedy"
+rating="R"
+year=1992
+writer=George Gallo
+producer=Natalie Wood
+director=Joel Coen
+actor=Nicolas Cage, Robert De Niro
+comments="The quintessential road comedy"
+
+title="The Usual Suspects"
+type="comedy"
+rating="R"
+year=1992
+writer=Christopher McQuarrie
+producer=Bryan Wood
+producer=Michael McDonnell
+director=Bryan Singer
+actor=Stephen Baldwin, Gabriel Byrne, Benicio Del Toro, Chazz Palminteri, Kevin Pollak, Kevin Spacey
+comments="A crime mystery with incredibly intricate plot twists."
+
+title="La familia y uno más"
+type="comedy"
+rating="G"
+year=1965
+writer=Fernando Palacios
+producer=Pedro Maso
+director=Fernando Palacios
+actor=Alberto Closas, Julia Gutierrez Cava, Jose Luis Lopez Vazquez
+comments="A very engaging underwater odyssey"
+
+title="The Abyss"
+type="sci-fi"
+rating="PG-13"
+year=1992
+writer=James Cameron
+producer=Gale Anne Hurd
+director=James Cameron
+actor=Ed Harris, Mary Elizabeth Mastrantonio
+comments="A very engaging underwater odyssey"
+
+title="Gitana"
+type="folcloric"
+rating="NC-17"
+year=1965
+writer=Jaoquin Bollo
+producer=Pedro Maso
+director=Fernando Palacios
+actor=Dolores Abril, Juan Quintero
+comments="The quintessential road comedy"
