@@ -18,10 +18,10 @@ public class Server {
 				System.out.println("Recibido --------------");
 				DataInputStream dis = new DataInputStream(cliente.getInputStream());//recibimos el mensaje del cliente con input
 				String mensaje = dis.readUTF();//recogemos el mensaje como string
-				System.out.println(mensaje + i);//mostramos el mensaje
+				System.out.println(mensaje);//mostramos el mensaje
 				
 				DataOutputStream dos = new DataOutputStream(cliente.getOutputStream());
-				dos.writeUTF("Hola cliente desde el servidor");
+				dos.writeUTF("Hola desde el servidor al cliente " + i);
 			}
 			
 			System.out.println("Demasiados clientes por hoy");
