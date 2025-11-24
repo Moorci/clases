@@ -10,15 +10,15 @@ public class Server {
 
 	public static void main(String[] args) {
 		try {
-			ServerSocket servidor = new ServerSocket(5000); //creamos el servidor en este puerto
+			ServerSocket servidor = new ServerSocket(5000);
 			System.out.println("Servidor iniciado");
 			
 			for (int i = 1; i <= 3; i++) {
 				Socket cliente = servidor.accept();
 				System.out.println("Recibido --------------");
-				DataInputStream dis = new DataInputStream(cliente.getInputStream());//recibimos el mensaje del cliente con input
-				String mensaje = dis.readUTF();//recogemos el mensaje como string
-				System.out.println(mensaje);//mostramos el mensaje
+				DataInputStream dis = new DataInputStream(cliente.getInputStream());
+				String mensaje = dis.readUTF();
+				System.out.println(mensaje);
 				
 				DataOutputStream dos = new DataOutputStream(cliente.getOutputStream());
 				dos.writeUTF("Hola desde el servidor al cliente " + i);

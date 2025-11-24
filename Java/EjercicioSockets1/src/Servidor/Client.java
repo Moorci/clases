@@ -10,7 +10,7 @@ public class Client {
 
 	public static void main(String[] args) {
 		try {
-			Socket cliente = new Socket("10.5.13.246", 5000);
+			Socket cliente = new Socket("localhost", 5000);
 			
 			DataOutputStream dos = new DataOutputStream(cliente.getOutputStream());//para mandar un dato al server usamos output
 			dos.writeUTF("Hola desde cliente ");
