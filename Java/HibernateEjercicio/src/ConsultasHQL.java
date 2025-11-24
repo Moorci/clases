@@ -102,6 +102,32 @@ public class ConsultasHQL {
 			System.out.println(empleados6.get(i).getFechaAlt());
 			System.out.println("--------------------");
 		}
+		//Ejercicio 7
+		String hql7 = "select d.salario " +
+	              "from Empleados d " +
+	              "where d.empNo = (" +
+	              "   select e.dir " +
+	              "   from Empleados e " +
+	              "   where e.comision = (select max(emp.comision) from Empleados emp)" +
+	              ")";
+
+		Query<Float> q7 = sesion.createQuery(hql7, Float.class);
+		Float salarioDirector = q7.uniqueResult();
+	
+		System.out.println("Salario del director: " + salarioDirector);
+
+		
+		
+		//Ejercicio 8
+		String hql8 = "from Empleados emp " +
+	              "where emp.departamentos.loc = 'BARCELONA' " +
+	              "order by emp.salario desc";
+
+		Query<Empleados> q8 = sesion.createQuery(hql8, Empleados.class);
+		q8.setMaxResults(1);
+	
+		Empleados empleadoMaxBarcelona = q8.uniqueResult();
+		System.out.println("Fecha de alta: " + empleadoMaxBarcelona.getFechaAlt());
 		
 		session.close();
 		sesion.close();
