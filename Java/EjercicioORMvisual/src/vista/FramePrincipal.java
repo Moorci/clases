@@ -64,7 +64,12 @@ public class FramePrincipal extends JFrame {
 		JButton btnIncluir = new JButton("Incluir");
 		btnIncluir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				comboBox.removeAllItems();
+				ctr.incluir();
+				ctr.cargarProvincias();
+				for (Provincias provincia : ctr.provinciasList) {
+					comboBox.addItem(provincia.getNombre());
+				}
 			}
 		});
 		btnIncluir.setBounds(10, 11, 89, 23);

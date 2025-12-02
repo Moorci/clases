@@ -12,5 +12,10 @@ public class Controlador {
 		GestorProvincias gestorP = new GestorProvincias();
 		provinciasList = gestorP.cargarProvincias();
 	}
+	
+	public void incluir() {
+		GestorProvincias gestorP = new GestorProvincias();
+		gestorP.incluir();
+	}
 
 }
