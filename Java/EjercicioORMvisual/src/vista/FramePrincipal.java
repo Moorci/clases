@@ -58,6 +58,13 @@ public class FramePrincipal extends JFrame {
 		}
 		
 		JButton btnSeleccionar = new JButton("Seleccionar");
+		btnSeleccionar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String provincia = (String) comboBox.getSelectedItem();
+				FrameMunicipios frame = new FrameMunicipios(provincia, ctr);
+				frame.setVisible(true);
+			}
+		});
 		btnSeleccionar.setBounds(331, 414, 144, 23);
 		contentPane.add(btnSeleccionar);
 		
