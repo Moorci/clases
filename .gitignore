@@ -1,3 +1,42 @@
-.proyect
-**/empresaBD.json
-**/contactos.json
+# Compilados de Java
+*.class
+
+# Archivos de log
+*.log
+
+# BlueJ files
+*.ctxt
+
+# Archivos de configuración temporales
+*.properties~
+*.xml~
+
+# Directorios de Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+
+# Eclipse / IntelliJ / NetBeans
+.classpath
+.project
+.settings/
+.idea/
+*.iml
+nbproject/private/
+
+# Archivos de Hibernate (logs, cachés)
+hibernate.log
+hibernate.cfg.xml~
+*.hbm.xml~
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Archivos de prueba temporales
+*.swp
