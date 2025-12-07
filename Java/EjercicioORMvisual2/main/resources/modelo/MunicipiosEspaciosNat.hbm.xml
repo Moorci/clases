@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 6 dic 2025, 18:14:20 by Hibernate Tools 6.5.1.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class catalog="denboraldia" name="modelo.MunicipiosEspaciosNat" optimistic-lock="none" table="municipios_espacios_nat">
+        <composite-id class="modelo.MunicipiosEspaciosNatId" name="id">
+            <key-property name="idEspacio" type="int">
+                <column name="ID_ESPACIO"/>
+            </key-property>
+            <key-property name="idMunicipio" type="int">
+                <column name="ID_MUNICIPIO"/>
+            </key-property>
+        </composite-id>
+    </class>
+</hibernate-mapping>

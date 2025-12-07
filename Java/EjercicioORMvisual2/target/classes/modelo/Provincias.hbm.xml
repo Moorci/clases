@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 6 dic 2025, 18:14:20 by Hibernate Tools 6.5.1.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class catalog="denboraldia" name="modelo.Provincias" optimistic-lock="none" table="provincias">
+        <id name="idProvincia" type="int">
+            <column name="ID_PROVINCIA"/>
+            <generator class="assigned"/>
+        </id>
+        <property name="nombre" type="string">
+            <column length="50" name="NOMBRE"/>
+        </property>
+    </class>
+</hibernate-mapping>
