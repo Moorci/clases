@@ -1,5 +1,12 @@
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import retrofit2.Call;
 import retrofit2.Response;
 import retrofit2.Retrofit;
@@ -40,31 +47,20 @@ public class Principal {
 					System.out.println(product);
 
 				}
+				
+				//creo el fichero productos.json y meto todos los productos ahi				 
+				 Gson gson = new GsonBuilder().setPrettyPrinting().create();
+				 String json = gson.toJson(listaProducts);
 
-				/*
-				 * for(Product p: listaProducts) {
-				 * 
-				 * p.setTitle(p.getTitle());
-				 * 
-				 * p.setPrice(p.getPrice());
-				 * 
-				 * p.setDescription(p.getDescription());
-				 * 
-				 * p.setCategory(p.getCategory());
-				 * 
-				 * p.setImage(p.getImage());
-				 * 
-				 * Gson gson = new Gson();
-				 * 
-				 * String json = gson.toJson(p);
-				 * 
-				 * try (FileWriter writer = new FileWriter("productos.json")) {
-				 * 
-				 * gson.toJson(p, writer);
-				 * 
-				 * }
-				 */
+				 File archivo = new File("productos.json");
 
+				 try (FileWriter writer = new FileWriter(archivo)) {
+				     writer.write(json);
+				     System.out.println("\nArchivo productos.json creado correctamente.");
+				 } catch (IOException e) {
+				     e.printStackTrace();
+				 }
+				
 			}
 
 		} catch (IOException e) {
@@ -73,7 +69,21 @@ public class Principal {
 
 		}
 
-		// Guardar esa lista JSON en un fichero local llamado productos.json.
+		//leo el fichero
+		try (FileReader reader = new FileReader("productos.json")) {
+
+		    Gson gson = new Gson();
+
+		    // convertimos a products
+		    Products[] productosArray = gson.fromJson(reader, Products[].class);
+
+		    System.out.println("\nPrimero: " + productosArray[0].getTitle());
+		    
+		    productosArray[0].setTitle("Copia");
+
+		} catch (Exception e) {
+		    e.printStackTrace();
+		}
 
 		// --- PETICIÓN POST ---
 
