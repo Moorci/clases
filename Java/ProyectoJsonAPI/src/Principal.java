@@ -7,6 +7,7 @@ import java.util.List;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Response;
 import retrofit2.Retrofit;
@@ -14,105 +15,96 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Principal {
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 
-		// --- Crear instancia de Retrofit ---
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://fakestoreapi.com")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
 
-		Retrofit retrofit = new Retrofit.Builder().baseUrl("https://fakestoreapi.com") // URL base de la API
+        JsonPlaceholderApi api = retrofit.create(JsonPlaceholderApi.class);
 
-				.addConverterFactory(GsonConverterFactory.create()) // Conversor JSON <-> objetos Java
+        List<Products> listaProducts = null;
 
-				.build();
+        try {
+            Call<List<Products>> llamadaGet = api.obtenerProductos();
+            Response<List<Products>> respuestaGet = llamadaGet.execute();
 
-		// --- Crear la interfaz de la API ---
+            System.out.println("Código GET: " + respuestaGet.code());
 
-		JsonPlaceholderApi api = retrofit.create(JsonPlaceholderApi.class);
+            if (respuestaGet.isSuccessful() && respuestaGet.body() != null) {
+                listaProducts = respuestaGet.body();
 
-		// --- PETICIÓN GET ---
+                Gson gson = new GsonBuilder().setPrettyPrinting().create();
+                String json = gson.toJson(listaProducts);
 
-		Call<List<Products>> llamadaGet = api.obtenerProductos();
+                File archivo = new File("productos.json");
+                try (FileWriter writer = new FileWriter(archivo)) {
+                    writer.write(json);
+                }
+            }
 
-		try {
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-			Response<List<Products>> respuestaGet = llamadaGet.execute();
+        Products copia = null;
 
-			if (respuestaGet.isSuccessful() && respuestaGet.body() != null) {
+        try (FileReader reader = new FileReader("productos.json")) {
 
-				System.out.println("GET /products:");
+            Gson gson = new Gson();
+            Products[] productosArray = gson.fromJson(reader, Products[].class);
 
-				List<Products> listaProducts = respuestaGet.body();
+            System.out.println("\nPrimer producto: " + productosArray[0].getTitle());
 
-				for (Products product : listaProducts) {
+            copia = new Products(
+                    productosArray[0].getId(),
+                    "Copia " + productosArray[0].getTitle(),
+                    productosArray[0].getPrice(),
+                    productosArray[0].getDescription(),
+                    productosArray[0].getCategory(),
+                    productosArray[0].getImage()
+            );
 
-					System.out.println(product);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-				}
-				
-				//creo el fichero productos.json y meto todos los productos ahi				 
-				 Gson gson = new GsonBuilder().setPrettyPrinting().create();
-				 String json = gson.toJson(listaProducts);
+        int nuevoId = 21;
 
-				 File archivo = new File("productos.json");
+        try {
+            Call<ResponseBody> llamadaPost = api.crearProductos(copia);
+            Response<ResponseBody> respuestaPost = llamadaPost.execute();
 
-				 try (FileWriter writer = new FileWriter(archivo)) {
-				     writer.write(json);
-				     System.out.println("\nArchivo productos.json creado correctamente.");
-				 } catch (IOException e) {
-				     e.printStackTrace();
-				 }
-				
-			}
+            System.out.println("\nPOST código: " + respuestaPost.code());
+            System.out.println("POST body: " + respuestaPost.body().string());
 
-		} catch (IOException e) {
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-			e.printStackTrace();
+        try {
+            copia.setTitle("UPDATED");
 
-		}
+            Call<ResponseBody> llamadaPut = api.actualizarProducto(nuevoId, copia);
+            Response<ResponseBody> respuestaPut = llamadaPut.execute();
 
-		//leo el fichero
-		try (FileReader reader = new FileReader("productos.json")) {
+            System.out.println("\nPUT código: " + respuestaPut.code());
+            System.out.println("PUT body: " + respuestaPut.body().string());
 
-		    Gson gson = new Gson();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-		    // convertimos a products
-		    Products[] productosArray = gson.fromJson(reader, Products[].class);
+        try {
+            Call<ResponseBody> llamadaDelete = api.borrarProducto(nuevoId);
+            Response<ResponseBody> respuestaDelete = llamadaDelete.execute();
 
-		    System.out.println("\nPrimero: " + productosArray[0].getTitle());
-		    
-		    productosArray[0].setTitle("Copia");
+            System.out.println("\nDELETE código: " + respuestaDelete.code());
+            System.out.println("DELETE body: " + respuestaDelete.body().string());
 
-		} catch (Exception e) {
-		    e.printStackTrace();
-		}
-
-		// --- PETICIÓN POST ---
-
-		Products nuevoProduct = new Products(101, "Nuevo Producto", 29.99f, "Descripción del nuevo producto",
-
-				"categoría ejemplo", "https://example.com/imagen.jpg");
-
-		Call<Products> llamadaProduct = api.crearProductos(nuevoProduct);
-
-		try {
-
-			Response<Products> respuestaProduct = llamadaProduct.execute();
-
-			if (respuestaProduct.isSuccessful() && respuestaProduct.body() != null) {
-
-				System.out.println("\nPRODUCT /products:");
-
-				System.out.println(respuestaProduct.body());
-
-				System.out.println(respuestaProduct.code());
-
-			}
-
-		} catch (IOException e) {
-
-			e.printStackTrace();
-
-		}
-
-	}
-
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
