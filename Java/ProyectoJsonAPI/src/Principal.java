@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -34,6 +35,11 @@ public class Principal {
 
             if (respuestaGet.isSuccessful() && respuestaGet.body() != null) {
                 listaProducts = respuestaGet.body();
+
+                System.out.println("\nLISTA COMPLETA DE PRODUCTOS");
+                for (Products p : listaProducts) {
+                    System.out.println(p);
+                }
 
                 Gson gson = new GsonBuilder().setPrettyPrinting().create();
                 String json = gson.toJson(listaProducts);
@@ -70,14 +76,21 @@ public class Principal {
             e.printStackTrace();
         }
 
-        int nuevoId = 21;
+        int nuevoId = -1;
 
         try {
             Call<ResponseBody> llamadaPost = api.crearProductos(copia);
             Response<ResponseBody> respuestaPost = llamadaPost.execute();
 
             System.out.println("\nPOST código: " + respuestaPost.code());
-            System.out.println("POST body: " + respuestaPost.body().string());
+
+            String body = respuestaPost.body().string();
+            System.out.println("POST body: " + body);
+
+            JsonObject json = new Gson().fromJson(body, JsonObject.class);
+            nuevoId = json.get("id").getAsInt();
+
+            System.out.println("ID nuevo: " + nuevoId);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -90,7 +103,11 @@ public class Principal {
             Response<ResponseBody> respuestaPut = llamadaPut.execute();
 
             System.out.println("\nPUT código: " + respuestaPut.code());
-            System.out.println("PUT body: " + respuestaPut.body().string());
+            String bodyPut = respuestaPut.body().string();
+            System.out.println("PUT body: " + bodyPut);
+
+            JsonObject jsonPut = new Gson().fromJson(bodyPut, JsonObject.class);
+            System.out.println("Título actualizado: " + jsonPut.get("title").getAsString());
 
         } catch (IOException e) {
             e.printStackTrace();
