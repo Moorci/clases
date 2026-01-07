@@ -35,7 +35,7 @@ public class Servidor {
 				e.printStackTrace();
 			}
 			System.out.println(resumenTexto);
-			dos.writeUTF("Escribe la frase hasheada (" + resumenTexto + ")");
+			dos.writeUTF("Escribe la frase");
 			
 			String textoComparar = dis.readUTF();
 			System.out.println(textoComparar);

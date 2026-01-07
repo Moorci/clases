@@ -5,6 +5,8 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Scanner;
 
 public class Cliente {
@@ -25,7 +27,17 @@ public class Cliente {
 			System.out.println(mensaje2);
 			
 			String hash = teclado.next();
+			try {
+				MessageDigest md = MessageDigest.getInstance("SHA");
+				byte dataBytes[] = texto.getBytes();
+				md.update(dataBytes);
+				byte resumen[] = md.digest();
+				hash = new String(resumen);
+			}catch(NoSuchAlgorithmException e) {
+				e.printStackTrace();
+			}
 			dos.writeUTF(hash);
+			System.out.println(hash);
 			
 			String mensaje3 = dis.readUTF();
 			System.out.println(mensaje3);
