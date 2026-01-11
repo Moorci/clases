@@ -23,14 +23,9 @@ public class Servidor {
 				Socket cliente = servidor.accept();
 				HiloServidor hilo = new HiloServidor(cliente, usuarios);
 				hilo.start();
-				
-				hilo.join();
 			}
 			
 		}catch (IOException e) {
-			e.printStackTrace();
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
